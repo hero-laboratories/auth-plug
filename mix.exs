@@ -25,7 +25,7 @@ defmodule AuthPlug.MixProject do
   defp deps do
     [
       {:plug, "~> 1.5"},
-      {:json_web_token, "~> 0.2.10"}
+      {:jose, "~> 1.8"}
     ]
   end
 

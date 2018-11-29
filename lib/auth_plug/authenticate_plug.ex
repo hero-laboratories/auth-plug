@@ -8,15 +8,15 @@ defmodule AuthPlug.AuthenticatePlug do
       [bearer] = get_req_header(conn, "authorization")
       [_, jwt] = String.split(bearer, "Bearer ")
 
-      case JsonWebToken.verify(jwt, %{key: opts[:gateway_secret]}) do
-        {:ok, user_details} ->
-          assign(conn, :user_details, user_details)
+      case JOSE.JWE.block_decrypt(opts[:gateway_secret], jwt) do
+        {user_details, _} ->
+          assign(conn, :user_details, Poison.decode!(user_details))
         {:error, _} ->
           reject_request(conn)
       end
     rescue
       e -> e
-       reject_request(conn)
+           reject_request(conn)
     end
   end
 
