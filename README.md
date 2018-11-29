@@ -19,3 +19,16 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/auth_plug](https://hexdocs.pm/auth_plug).
 
+Then inject AuthenticatePlug in your pipeline
+
+```
+plug AuthPlug.AuthenticatePlug, gateway_secret: "SECRET_KEY"
+```
+
+Then access user details inside your controller
+
+```
+def controller_action(conn, _) do
+    conn.assigns[:user_details]
+end
+```
