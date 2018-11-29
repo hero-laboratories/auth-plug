@@ -21,13 +21,13 @@ be found at [https://hexdocs.pm/auth_plug](https://hexdocs.pm/auth_plug).
 
 Then inject AuthenticatePlug in your pipeline
 
-```
+```elixir
 plug AuthPlug.AuthenticatePlug, gateway_secret: "SECRET_KEY"
 ```
 
 Then access user details inside your controller
 
-```
+```elixir
 def controller_action(conn, _) do
     conn.assigns[:user_details]
 end
