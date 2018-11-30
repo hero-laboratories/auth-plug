@@ -4,7 +4,7 @@ defmodule AuthPlug.MixProject do
   def project do
     [
       app: :auth_plug,
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
       build_embedded: Mix.env == :prod,
@@ -29,13 +29,13 @@ defmodule AuthPlug.MixProject do
     ]
   end
 
-  defp description do
+  defp description() do
     """
       Library for signing the requests off and decoding current user details
     """
   end
 
-  defp package do
+  defp package() do
     [
       files: ["lib", "mix.exs", "README*", "LICENSE*"],
       maintainers: ["Tomasz Pawlak", "Andrii Votiakov"],

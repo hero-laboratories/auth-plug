@@ -21,7 +21,8 @@ defmodule AuthPlug.AuthenticatePlug do
   end
 
   defp reject_request(conn) do
-    send_resp(conn, 403, "Unauthenticated")
-    halt(conn)
+    conn
+    |> send_resp(403, "Unauthenticated")
+    |> halt()
   end
 end
